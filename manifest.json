@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Memory Usage Monitor",
+    "version": "1.0",
+    "description": "Моніторинг використання пам'яті на вебсайтах у реальному часі",
+    "permissions": [
+        "tabs",
+        "debugger",
+        "scripting",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "host_permissions": [
+        "*://*/*"
+    ]
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Usage Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            width: 400px;
+        }
+
+        #memory-usage {
+            margin-top: 10px;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+        h3 {
+            font-size: 10px;
+        }
+        h2 {
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Memory Usage</h1>
+
+    <h2>Total JS Heap Size</h2>
+    <h3>
+        The total allocated heap size, in bytes.
+        This is the total amount of memory currently allocated for JavaScript.
+    </h3>
+
+    <h2>Used JS Heap Size</h2>
+    <h3>
+        The currently active segment of JS heap, in bytes.
+        This value shows how much memory JavaScript code is currently using.
+    </h3>
+
+    <h2>JS Heap Size Limit</h2>
+    <h3>
+        The maximum size of the heap, in bytes, that is available to the context.
+        This is the maximum amount of memory that JavaScript can use for its execution in the browser.
+        This limit is set at the browser level and remains fixed during the session.
+    </h3>
+
+    <div id="memory-usage">Loading...</div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
