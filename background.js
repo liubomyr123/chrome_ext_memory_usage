@@ -39,7 +39,6 @@ function monitor_memory_usage() {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             const tab = tabs[0];
             active_tab_id = tab && tab.id || null;
-            console.log('tabs', tabs, active_tab_id);
 
             if (active_tab_id && tab && tab.url && !tab.url.startsWith("chrome://")) {
                 chrome.scripting.executeScript({
@@ -48,7 +47,6 @@ function monitor_memory_usage() {
                 }, (result) => {
                     if (result && result[0]) {
                         const memory_usage = result[0].result;
-                        // console.log('Memory Usage:', memoryUsage);
 
                         if (is_popup_open) {
                             chrome.runtime.sendMessage({ memoryUsage: memory_usage });
@@ -59,7 +57,7 @@ function monitor_memory_usage() {
                 console.warn("Can not monitor chrome:// URL");
             }
         });
-    }, 1_000);
+    }, 10);
 }
 
 function get_memory_info() {
@@ -70,6 +68,7 @@ function get_memory_info() {
             usedJSHeapSize: performance.memory.usedJSHeapSize
         };
     } else {
+        console.warn("Memory API not supported");
         return { error: "Memory API not supported" };
     }
 }
